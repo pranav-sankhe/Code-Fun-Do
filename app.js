@@ -43,7 +43,7 @@ bot.dialog('/get_profile', [
     },
     function (session, results) {
         session.userData.coding = results.response;
-        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
+        builder.Prompts.choice(session, "In what language do you code ?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
         session.userData.language = results.response.entity;
@@ -56,6 +56,10 @@ bot.dialog('/get_profile', [
         session.send('How\'s ur health' + session.userData.name + ' ?');
         builder.Prompts.choice(session,'','Very Good|Good|Normal|Bad|Very Bad');
     },
+    var jsonfile = require('jsonfile');
+for (i=0; i <11 ; i++){
+   jsonfile.writeFile('.json', "id :" + i + " square :" + i*i);
+}
     function (session,results){
         switch(results.response.index){
             case 0: session.beginDialog('/VeryGood');
